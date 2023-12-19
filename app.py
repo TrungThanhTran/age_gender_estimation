@@ -8,6 +8,8 @@ import torch
 from mivolo.data.data_reader import InputType, get_all_files, get_input_type
 from mivolo.predictor import Predictor
 from timm.utils import setup_default_logging
+import gc
+
 
 class dotdict(dict):
     """dot.notation access to dictionary attributes"""
@@ -60,6 +62,7 @@ def main():
             st.markdown(f'running time = {time.time() - start:.2f} seconds')
         else:
             st.warning("Please upload an image")
-
+        gc.collect()
+        
 if __name__ == "__main__":
     main()
